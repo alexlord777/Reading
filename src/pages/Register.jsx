@@ -1,9 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'
-import { registerRequest } from '../api/auth';
 import { useAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -37,7 +37,7 @@ export const Register = () => {
           }
           <input type="email" {...register("email", { required: true })}
             className="w-full bg-zinc-700 text-white  px-4 py-2 rounded-md my-2"
-            placeholder='email(opcional)'
+            placeholder='email'
           />{
             errors.email && (
               <p className='text-red-500' >Usename is required</p>
@@ -54,6 +54,10 @@ export const Register = () => {
 
           <button type='submit'>Register</button>
         </form>
+        <p className='flex gap-x-2 justify-between'>
+          Already have an acount? <Link to="/login"
+          className='text-sky-500'>Sing up</Link>
+        </p>
       </div>
 
     </div>
